@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  mail: MyText
+  send_due_date_reminder: false
+  due_date_reminder_interval: 1
+  due_date_reminder_time: 2022-04-09 23:24:16
+  time_zone: MyString
+
+two:
+  name: MyText
+  mail: MyText
+  send_due_date_reminder: false
+  due_date_reminder_interval: 1
+  due_date_reminder_time: 2022-04-09 23:24:16
+  time_zone: MyString
