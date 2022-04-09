@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_212416) do
+ActiveRecord::Schema.define(version: 2022_04_09_214132) do
+
+  create_table "tickets", force: :cascade do |t|
+    t.text "title"
+    t.text "description"
+    t.integer "user_id"
+    t.date "due_date"
+    t.integer "status_id"
+    t.integer "progress"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.text "name"

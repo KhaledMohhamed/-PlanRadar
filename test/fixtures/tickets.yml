@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  description: MyText
+  user: one
+  due_date: 2022-04-09
+  status_id: 1
+  progress: 1
+
+two:
+  title: MyText
+  description: MyText
+  user: two
+  due_date: 2022-04-09
+  status_id: 1
+  progress: 1
