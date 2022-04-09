@@ -22,7 +22,7 @@
 
 <p>
   <strong>Due date reminder time:</strong>
-  <%= @user.due_date_reminder_time %>
+  <%= @user.due_date_reminder_time.strftime("%H:%M") %>
 </p>
 
 <p>
