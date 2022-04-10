@@ -1,7 +1,7 @@
 class SendMailJob < ApplicationJob
   queue_as :default
 
-  def perform(args)
-    puts "SendMailJob is performed ya #{args}"
+  def perform(ticket)
+    UserMailer.with(ticket: ticket).due_date_reminder.deliver_now
   end
 end

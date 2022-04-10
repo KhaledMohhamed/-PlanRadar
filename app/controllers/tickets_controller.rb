@@ -1,5 +1,6 @@
 class TicketsController < ApplicationController
   before_action :set_ticket, only: %i[ show edit update destroy ]
+  after_action :send_email_to_user, only: %i[ create ] , if: :send_due_date_reminder?
 
   # GET /tickets or /tickets.json
   def index
@@ -66,5 +67,21 @@ class TicketsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def ticket_params
       params.require(:ticket).permit(:title, :description, :user_id, :due_date, :status_id, :progress)
+    end
+
+    def send_email_to_user 
+      SendMailJob.set(wait_until: caluculate_due_date_reminder_time).perform_later(@ticket)
+      # UserMailer.with(ticket: @ticket).due_date_reminder.deliver_now
+    end
+    
+    def send_due_date_reminder?
+      @ticket.user.send_due_date_reminder
+    end
+
+    def caluculate_due_date_reminder_time
+      t = @ticket.due_date
+      u = @ticket.user.due_date_reminder_time
+      due_date = DateTime.new(t.year, t.month, t.day, u.hour, u.min, u.sec, DateTime.now.in_time_zone(@ticket.user.time_zone).zone)
+      due_date_with_interval = due_date - (1.day * @ticket.user.due_date_reminder_interval)
     end
 end
