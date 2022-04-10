@@ -63,3 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Background job processing using Sidekiq
 gem "sidekiq"
+gem 'sidekiq-status'

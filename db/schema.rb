@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_09_214132) do
+ActiveRecord::Schema.define(version: 2022_04_10_224250) do
+
+  create_table "ticket_logs", force: :cascade do |t|
+    t.integer "ticket_id"
+    t.string "jid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ticket_id"], name: "index_ticket_logs_on_ticket_id"
+  end
 
   create_table "tickets", force: :cascade do |t|
     t.text "title"
@@ -21,6 +29,7 @@ ActiveRecord::Schema.define(version: 2022_04_09_214132) do
     t.integer "progress"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "jid"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
 
